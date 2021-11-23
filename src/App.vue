@@ -1,18 +1,23 @@
 <script>
 export default {
-  methods: {
+  methods:{
     goto(page){
-      if(this.$router.name != page){
-        console.log(page);
-        this.$router.push({ name: page })
+      if(this.$route.name != page){
+        this.$router.push({ name: page });
       }
     }
   }
-}
+};
 </script>
 
 <template>
-  <div>
-      <button :to="{name: 'Words'}">Begin</button>
-  </div>
+  <v-app>
+    <v-app-bar app>
+    <v-app-bar-title>Dictionary</v-app-bar-title>
+    <v-spacer/>
+      <v-btn :to="{name: 'Words'}">Begin</v-btn>
+    </v-app-bar>
+    <v-main>
+    </v-main>
+  </v-app>
 </template>
