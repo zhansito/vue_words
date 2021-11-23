@@ -2,8 +2,8 @@ import Words from '@/views/Words'
 
 export default[
     {
-        path: '/',
-        name: 'words',
+        path: '/words',
+        name: 'Words',
         component: Words,
     },
 ]

@@ -22,6 +22,7 @@ export default {
             words.get(`word/${this.input}`)
             .then(response => {
                 this.definition = response.data
+                console.log(response.data);
             })
             .finally(() => this.loading = false)
         }
@@ -30,5 +31,8 @@ export default {
 </script>
 
 <template>
+<div>
+<h1>Dictionary</h1>
 <input v-model="input">
+</div>
 </template>

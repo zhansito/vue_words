@@ -1,10 +1,18 @@
 <script>
-
+export default {
+  methods: {
+    goto(page){
+      if(this.$router.name != page){
+        console.log(page);
+        this.$router.push({ name: page })
+      }
+    }
+  }
+}
 </script>
 
 <template>
   <div>
-      <!-- <v-btn :to="{name: '/words'}">Begin</v-btn> -->
-      <v-btn @click="this.$router.push({name: 'words'})">Begin</v-btn>
+      <button :to="{name: 'Words'}">Begin</button>
   </div>
 </template>
