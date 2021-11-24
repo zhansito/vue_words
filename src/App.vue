@@ -15,7 +15,7 @@ export default {
             this.isDefinition = true
             
 
-            http.get(`words/${this.word}/synonyms`)
+            http.get(`words/${this.word}/definitions`)
             .then(response => {
                 console.log(response.data);
                 this.definition = response.data
@@ -40,7 +40,7 @@ export default {
     <v-spacer/>
     </v-app-bar>
     <v-container style="margin-top: 100px;">
-      
+
     </v-container>
     <v-btn @click="loadDef" style="margin-right: 5px">Definition</v-btn>
     <v-btn @click="loadDef" style="margin-right: 5px">Synonyms</v-btn>
