@@ -3,31 +3,23 @@ import http from '@/plugins/http'
 
 export default {
   data: () => ({
-        loading: false,
+        isDefinition: false,
         word: '',
         definition: '',
     }),
-    computed: {
-        input(){
-            let word = document.getElementById("input").value
-            return word
-        }
-    },
     mounted() {
-        //this.load()
-        
-        //console.log(word)
+        this.loadDef()
     },
     methods: {
         loadDef() {
-            this.loading = true
+            this.isDefinition = true
 
-            http.get(`word/${this.input}`)
+            http.get(`words/${this.word}/definitions`)
             .then(response => {
                 console.log(response.data);
                 this.definition = response.data
             })
-            .finally(() => this.loading = false)
+            .finally(() => { this.isDefinition = false })
         }
   //   } 
   // methods:{
@@ -41,15 +33,27 @@ export default {
 </script>
 
 <template>
-  <v-app>
-    <v-app-bar app>
+    <v-container >
+    <!-- <v-app-bar app>
     <v-app-bar-title>Dictionary</v-app-bar-title>
     <v-spacer/>
-    </v-app-bar>
-    <v-container style="margin-top: 120px">
+    </v-app-bar> -->
+
     <v-btn @click="loadDef">Definition</v-btn>
     <v-btn :to="{name: 'Words'}">Sinonyms</v-btn>
-    </v-container>
+
     <v-text-field v-model="word" label="Enter the word"/>
-  </v-app>
+
+          <h1>Result</h1>
+        <v-card>
+          <v-list >
+            <v-list-item>
+              <v-list-item-content>
+                Result
+              {{ word }}
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-card>
+    </v-container>
 </template>
