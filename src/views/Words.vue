@@ -32,7 +32,7 @@ export default {
 </script>
 
 <template>
-<v-container>
+<v-container style="margin-top: 120px">
 <h1>Dictionary</h1>
 
 <v-text-field v-model="word" label="Enter the word"/>
