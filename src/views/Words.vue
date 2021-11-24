@@ -1,9 +1,10 @@
 <script>
-import words from '../plugins/words'
+import http from '@/plugins/http'
 
 export default {
     data: () => ({
         loading: false,
+        word: '',
         definition: '',
     }),
     computed: {
@@ -19,8 +20,9 @@ export default {
         load() {
             this.loading = true
 
-            words.get(`word/${this.input}`)
+            http.get(`word/${this.input}`)
             .then(response => {
+                console.log(response.data);
                 this.definition = response.data
             })
             .finally(() => this.loading = false)
@@ -30,5 +32,10 @@ export default {
 </script>
 
 <template>
-<input v-model="input">
+<v-container>
+<h1>Dictionary</h1>
+
+<v-text-field v-model="word" label="Enter the word"/>
+
+</v-container>
 </template>
