@@ -13,8 +13,9 @@ export default {
     methods: {
         loadDef() {
             this.isDefinition = true
+            
 
-            http.get(`words/${this.word}/definitions`)
+            http.get(`words/${this.word}/synonyms`)
             .then(response => {
                 console.log(response.data);
                 this.definition = response.data
@@ -34,23 +35,23 @@ export default {
 
 <template>
     <v-container >
-    <!-- <v-app-bar app>
+    <v-app-bar app>
     <v-app-bar-title>Dictionary</v-app-bar-title>
     <v-spacer/>
-    </v-app-bar> -->
-
-    <v-btn @click="loadDef">Definition</v-btn>
-    <v-btn :to="{name: 'Words'}">Sinonyms</v-btn>
+    </v-app-bar>
+    <v-container style="margin-top: 100px;">
+      
+    </v-container>
+    <v-btn @click="loadDef" style="margin-right: 5px">Definition</v-btn>
+    <v-btn @click="loadDef" style="margin-right: 5px">Synonyms</v-btn>
 
     <v-text-field v-model="word" label="Enter the word"/>
 
-          <h1>Result</h1>
         <v-card>
           <v-list >
             <v-list-item>
               <v-list-item-content>
-                Result
-              {{ word }}
+              {{ definition }}
               </v-list-item-content>
             </v-list-item>
           </v-list>
