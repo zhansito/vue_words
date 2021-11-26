@@ -1,14 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Words from '../views/Words'
+import Definitions from '../views/Definitions'
 
 Vue.use(VueRouter)
 
 const routes = [
     {
-        path: '/words',
-        name: 'Words',
-        component: Words,
+        path: '/definitions',
+        name: 'Definitions',
+        component: Definitions,
     },
 ]
 

@@ -2,11 +2,22 @@
 import http from '@/plugins/http'
 
 export default {
-  data: () => ({
+    data: () => ({
         isDefinition: false,
         word: '',
         definition: null,
     }),
+    watch: {
+        page() {
+            this.loadDef()
+        }
+    },
+    computed: {
+        word() {
+            //console.log(this.$route.params.word);
+            return this.$route.params.word
+        }
+    },
     mounted() {
         this.loadDef()
     },
@@ -34,32 +45,12 @@ export default {
             .finally(() => { this.isDefinition = false })      
             
         }
-  //   } 
-  // methods:{
-  //   goto(page){
-  //     if(this.$route.name != page){
-  //       this.$router.push({ name: page });
-  //     }
-  //   }
-  }
-};
+    }
+}
 </script>
 
 <template>
-<v-container>
-    <v-app-bar app>
-    <v-app-bar-title>Dictionary</v-app-bar-title>
-    <v-spacer/>
-    </v-app-bar>
-    <v-container style="margin-top: 100px;">
-
-    <v-btn :to="{name: 'Definitions', prams: {word: word}}">Definition</v-btn>
-    <v-btn @click="loadSyn" style="margin-right: 5px">Synonyms</v-btn>
-    </v-container>
-
-    <v-text-field v-model="word" label="Enter the word"/> 
-</v-container>
-    <!-- <v-container >
+    <v-container >
     <v-app-bar app>
     <v-app-bar-title>Dictionary</v-app-bar-title>
     <v-spacer/>
@@ -76,10 +67,11 @@ export default {
           <v-list >
             <v-list-item v-for="(item, i) in definition" :key="i">
               <v-list-item-content >
+              <!-- {{ definition[0] }} -->
               {{ item.definition}}
               </v-list-item-content>
             </v-list-item>
           </v-list>
         </v-card>
-    </v-container> -->
+    </v-container>
 </template>
