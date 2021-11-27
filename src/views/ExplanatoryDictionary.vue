@@ -15,11 +15,6 @@ export default {
         word: '',
         result: null,
     }),
-    mounted() {
-        //if(message != null){
-            this.load()
-        //}
-    },
     methods: {
         load(message) {
             this.isSynonym = false
@@ -156,9 +151,6 @@ export default {
               {{ item }}
               </v-list-item-content>
               <v-list-item-content v-if="isFrequency === true">
-              {{ item }}
-              </v-list-item-content>
-              <v-list-item-content >
               {{ item }}
               </v-list-item-content>
               <v-list-item-content v-if="isSearch === true">
