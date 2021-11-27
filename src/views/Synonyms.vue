@@ -22,17 +22,6 @@ export default {
         this.loadDef()
     },
     methods: {
-        loadDef() {
-            this.isDefinition = true
-            
-
-            http.get(`words/${this.word}/definitions`)
-            .then(response => {
-                console.log(response.data);
-                this.definition = response.data.definitions
-            })
-            .finally(() => { this.isDefinition = false })
-        },
         loadSyn(){
           this.isDefinition = true
             
